@@ -37,6 +37,11 @@
 		BE7FE7EA166185DC00F939DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7FE7E9166185DC00F939DA /* AppDelegate.m */; };
 		BE7FE7ED166185DC00F939DA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7FE7EC166185DC00F939DA /* MainViewController.m */; };
 		BE7FE7EF166185DC00F939DA /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7FE7EE166185DC00F939DA /* MainViewController.xib */; };
+		BE7FE7F9166185EC00F939DA /* www in Resources */ = {isa = PBXBuildFile; fileRef = BE7FE7F8166185EC00F939DA /* www */; };
+		BE7FE8001661862400F939DA /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7FE7FB1661862400F939DA /* AsyncImageView.m */; };
+		BE7FE8011661862400F939DA /* CDVAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7FE7FD1661862400F939DA /* CDVAnnotation.m */; };
+		BE7FE8021661862400F939DA /* MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7FE7FF1661862400F939DA /* MapKit.m */; };
+		BE7FE8041661869B00F939DA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7FE8031661869B00F939DA /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +82,14 @@
 		BE7FE7EE166185DC00F939DA /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController.xib; path = Classes/MainViewController.xib; sourceTree = "<group>"; };
 		BE7FE7F1166185DC00F939DA /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
 		BE7FE7F2166185DC00F939DA /* verify.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = verify.sh; sourceTree = "<group>"; };
+		BE7FE7F8166185EC00F939DA /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
+		BE7FE7FA1661862400F939DA /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncImageView.h; path = "../../../Downloads/phonegap-plugins-master/iOS/MapKit/AsyncImageView.h"; sourceTree = "<group>"; };
+		BE7FE7FB1661862400F939DA /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncImageView.m; path = "../../../Downloads/phonegap-plugins-master/iOS/MapKit/AsyncImageView.m"; sourceTree = "<group>"; };
+		BE7FE7FC1661862400F939DA /* CDVAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVAnnotation.h; path = "../../../Downloads/phonegap-plugins-master/iOS/MapKit/CDVAnnotation.h"; sourceTree = "<group>"; };
+		BE7FE7FD1661862400F939DA /* CDVAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVAnnotation.m; path = "../../../Downloads/phonegap-plugins-master/iOS/MapKit/CDVAnnotation.m"; sourceTree = "<group>"; };
+		BE7FE7FE1661862400F939DA /* MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapKit.h; path = "../../../Downloads/phonegap-plugins-master/iOS/MapKit/MapKit.h"; sourceTree = "<group>"; };
+		BE7FE7FF1661862400F939DA /* MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapKit.m; path = "../../../Downloads/phonegap-plugins-master/iOS/MapKit/MapKit.m"; sourceTree = "<group>"; };
+		BE7FE8031661869B00F939DA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE7FE8041661869B00F939DA /* MapKit.framework in Frameworks */,
 				BE7FE7A2166185DC00F939DA /* Foundation.framework in Frameworks */,
 				BE7FE7A4166185DC00F939DA /* UIKit.framework in Frameworks */,
 				BE7FE7A6166185DC00F939DA /* CoreGraphics.framework in Frameworks */,
@@ -114,9 +128,11 @@
 		BE7FE78F166185DB00F939DA = {
 			isa = PBXGroup;
 			children = (
+				BE7FE8031661869B00F939DA /* MapKit.framework */,
 				BE7FE7BB166185DC00F939DA /* map3 */,
 				BE7FE7A0166185DC00F939DA /* Frameworks */,
 				BE7FE79E166185DC00F939DA /* Products */,
+				BE7FE7F8166185EC00F939DA /* www */,
 			);
 			sourceTree = "<group>";
 		};
@@ -253,6 +269,12 @@
 		BE7FE7F0166185DC00F939DA /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				BE7FE7FA1661862400F939DA /* AsyncImageView.h */,
+				BE7FE7FB1661862400F939DA /* AsyncImageView.m */,
+				BE7FE7FC1661862400F939DA /* CDVAnnotation.h */,
+				BE7FE7FD1661862400F939DA /* CDVAnnotation.m */,
+				BE7FE7FE1661862400F939DA /* MapKit.h */,
+				BE7FE7FF1661862400F939DA /* MapKit.m */,
 				BE7FE7F1166185DC00F939DA /* README */,
 			);
 			name = Plugins;
@@ -328,6 +350,7 @@
 				BE7FE7E4166185DC00F939DA /* Capture.bundle in Resources */,
 				BE7FE7E6166185DC00F939DA /* Cordova.plist in Resources */,
 				BE7FE7EF166185DC00F939DA /* MainViewController.xib in Resources */,
+				BE7FE7F9166185EC00F939DA /* www in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +380,9 @@
 				BE7FE7C2166185DC00F939DA /* main.m in Sources */,
 				BE7FE7EA166185DC00F939DA /* AppDelegate.m in Sources */,
 				BE7FE7ED166185DC00F939DA /* MainViewController.m in Sources */,
+				BE7FE8001661862400F939DA /* AsyncImageView.m in Sources */,
+				BE7FE8011661862400F939DA /* CDVAnnotation.m in Sources */,
+				BE7FE8021661862400F939DA /* MapKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

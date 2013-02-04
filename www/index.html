@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<!--
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+# http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#  KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+-->
+  <head>
+      <title>Abbeyshrule Village</title>
+      
+      <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <!-- Change Status bar to black in color-->
+      <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+      <!-- App Icon-->
+      <link rel="apple-touch-icon" href="images/appicon.png" type="" />
+      <!-- Splash Screen-->
+      <link rel="apple-touch-startup-image" href="images/splash.jpg" />
+      <!-- Custom Theme-Roller CSS file -->
+      <link rel="stylesheet" href="css/abbeyshrule2.css" />
+      <link rel="stylesheet" href="css/structure.css" />
+      
+      <!-- jQuery -->
+      <script src="js/jquery.js"></script>
+      <!-- jQuery Mobile -->
+      <script src="js/jquery.mobile.js"></script>
+      
+      <script src="js/iscroll.js?v3.7.1"></script>
+      <script src="js/jquery.mobile.iscroll.js"></script>
+      
+      
+      <!-- Custom JavaScript file -->
+      <script src="js/abbeyshrule.js"></script>
+      <!-- Custom Stylesheet -->
+      <link rel="stylesheet" href="css/styles.css" />
+      
+      
+
+	<!-- iPad/iPhone specific css below, add after your main css >
+	<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />		
+	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />		
+	-->
+	<!-- If your application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
+	<script type="text/javascript" charset="utf-8" src="js/cordova-1.9.0.js"></script>
+      <script type="text/javascript" charset="utf-8" src="MapKit.js"></script>
+      <script type="text/javascript" charset="utf-8">
+          // If you want to prevent dragging, uncomment this section
+          /*
+           function preventBehavior(e) {
+           e.preventDefault();
+           };
+           document.addEventListener("touchmove", preventBehavior, false);
+           */
+          
+          function onBodyLoad() {
+              document.addEventListener("deviceready",onDeviceReady,false);
+          }
+          
+          function cbMapCallback() {
+              alert("You selected pin : ");
+          }
+          function cbMapCallback2() {
+              alert("Call back 2");
+          }
+          
+          /* When this function is called, PhoneGap has been initialized and is ready to roll */
+          function onDeviceReady() {
+              
+          }
+          
+          var pins = [
+                      
+                      { lat:53.590123,
+                      lon:-7.646078,
+                      title:"Airfield",
+                      pinColor:"purple",
+                      imageURL:"/Users/Pierce/Documents/map3/www/pp@2x.png",
+                      index:2,
+                      selected:false
+                      },
+                      
+                      { lat:53.590645,
+                      lon:-7.651142,
+                      title:"Aqueduct",
+                      pinColor:"purple",
+                      index:3,
+                      selected:false
+                      },
+                      
+                      { lat:53.583653,
+                      lon:-7.657569,
+                      title:"Abbeyshrule Village",
+                      pinColor:"green",
+                      index:3,
+                      selected:true
+                      },
+                      { lat:53.579525,
+                      lon:-7.658298,
+                      title:"Abbey",
+                      pinColor:"purple",
+                      index:3,
+                      selected:false
+                      },
+                      
+                    
+                      ]
+          
+          function showMap() {
+              // do your thing!
+              var _type = $('#mapTypeOption input:radio[name=type]:checked').val(); 
+              var mapOptions = {
+                  
+                  height: 360,
+                  diameter: 1000,
+                  offsetTop: 43,
+                  lat: pins[0].lat,
+                  lon: pins[0].lon
+              };
+              
+              window.plugins.mapKit.showMap();
+              window.plugins.mapKit.setMapData(mapOptions);
+              window.plugins.mapKit.addMapPins(pins);
+              window.plugins.mapKit.setMapType(_type); 
+              
+          }
+          
+          function hideMap() {
+              window.plugins.mapKit.hideMap();
+          }
+          
+          function clearPins() {
+              window.plugins.mapKit.clearMapPins();
+          }
+          
+          function resizeMap() {
+              var mapOptions = {
+                  height:260
+              }
+              
+              window.plugins.mapKit.setMapData(mapOptions);
+          }
+          
+          function zoomIn() {
+              var mapOptions = {
+                  diameter: 30
+              }
+              
+              window.plugins.mapKit.setMapData(mapOptions);
+          }
+          
+          </script>
+      
+      
+      
+  </head>
+    
+    
+  <body onload="onBodyLoad();">
+  
+      <!-- Page: Home -->
+      <div id="home" data-role="page" data-title="Abbeyshrule: Home" data-theme="a" >
+      	  <div data-role="header" data-position="fixed">
+              
+              <a href="#info" data-transition="fade" data-icon="info" data-iconpos="notext" data-rel="dialog">Info</a>
+          </div> <!-- /header -->
+          <div data-role="content"> <!-- Content -->
+          </div> <!-- /Content -->
+          <div data-role="footer" data-position="fixed" data-id="av_footer" data-theme="a"> <!-- Footer -->
+              <div data-role="navbar"> <!-- NavBar -->
+                  <ul>
+                      
+                      <li><a href="#news"  data-role="button" data-icon="av_news">News</a></li>
+                      <li><a href="#activity" data-role="button" data-icon="av_act">Activities</a></li>
+                      <li><a href="#gallery" data-role="button" data-icon="av_gallery">Gallery</a></li>
+                      <li><a href="#nav" onclick="showMap()" data-role="button" data-icon="av_nav">Map</a></li>
+                      <li><a href="#contact" data-role="button" data-icon="av_contact">Contact</a></li>
+                  </ul>
+              </div> <!-- /navbar -->
+          </div> <!-- /footer -->
+      </div> <!-- /PAGE -->
+      
+      
+      <!-- Page: Nav -->
+      <div id="nav" data-role="page"  data-title="Abbeyshrule: Home" data-theme="a" >
+      	  <div data-role="header" data-position="fixed">
+              <h1>Explore</h1>
+              <a href="#home" data-icon="home" data-iconpos="notext">Home</a>
+              <a href="#info" data-icon="info" data-iconpos="notext" data-rel="dialog">Info</a>
+          </div> <!-- /header -->
+          <div data-role="content"> <!-- Content -->
+          </div> <!-- /Content -->
+          <div data-role="footer" data-position="fixed" data-id="av_footer" data-theme="a"> <!-- Footer -->
+              <div data-role="navbar"> <!-- NavBar -->
+                  <ul>
+                      
+                      <li><a href="#home" data-transition="none" onclick="hideMap()" data-role="button" data-icon="home">Home</a></li>
+                      <li><a href="#activity" data-transition="none" onclick="hideMap()" data-role="button" data-icon="av_act">Activities</a></li>
+                      <li><a href="#gallery"  data-transition="none" onclick="hideMap()" data-role="button" data-icon="av_gallery">Gallery</a></li>
+                      <li><a href="#contact" data-transition="none" onclick="hideMap()" data-role="button" data-icon="av_contact">Contact</a></li>
+                  </ul>
+              </div> <!-- /navbar -->
+          </div> <!-- /footer -->
+      </div> <!-- /PAGE -->
+      
+      <!-- Page: News -->
+      <div id="news" data-role="page" data-title="Abbeyshrule: News" data-theme="a">
+          <div data-role="header" data-position="fixed" data-id="av_header" data-theme="a">
+              <h1>News</h1>
+              <a href="#home" data-icon="home" data-iconpos="notext">Home</a>
+              <a href="#info" data-icon="info" data-iconpos="notext" data-rel="dialog">Info</a>
+          </div> <!-- /header -->
+          <div data-role="content" id="postlist"> <!-- Content -->
+          </div> <!-- /Content -->
+          <div data-role="footer" data-position="fixed" data-id="av_footer" data-theme="a"> <!-- Footer -->
+              <div data-role="navbar"> <!-- NavBar -->
+                  <ul>
+                      <li><a href="#home" data-role="button" data-icon="home">Home</a></li>
+                      <li><a href="#activity" data-role="button" data-icon="av_act">Activities</a></li>
+                      <li><a href="#gallery" data-role="button" data-icon="av_gallery">Gallery</a></li>
+                      <li><a href="#nav" onclick="showMap()" data-role="button" data-icon="av_nav">Map</a></li>
+                      <li><a href="#contact" data-role="button" data-icon="av_contact">Contact</a></li>
+                  </ul>
+              </div> <!-- /navbar -->
+          </div> <!-- /footer -->
+      </div> <!-- /page -->
+      
+      <!-- Page: News Posts -->
+      <div id ="newspost" data-role="page">
+          <div data-role="header" data-position="fixed" data-theme="a">
+              <a href="#news" data-icon="back" data-iconpos="notext" data-direction="reverse">Videos</a>
+              <h1>Post</h1>
+          </div> <!-- /Header -->
+          <div data-role="content">
+              <div id="mypost"></div>
+          </div> <!-- /Content -->
+      </div> <!-- /Page -->
+      
+      <!-- Page: Gallery -->
+      <div id="gallery" data-role="page" data-title="Abbeyshrule: Gallery" data-theme="a">
+          <div data-role="header" data-position="fixed" data-id="av_header" data-theme="a">
+              <h1>Gallery</h1>
+              <a href="#home" data-icon="home" data-iconpos="notext">Home</a>
+              <a href="#info" data-icon="info" data-iconpos="notext"data-rel="dialog">Info</a>
+          </div> <!-- /header -->
+          <div data-role="content"> <!-- Content -->
+              <a href="#photos" data-role="button">Photos</a>
+              <a href="#videos" data-role="button">Videos</a>
+          </div> <!-- /Content -->
+          <div data-role="footer" data-position="fixed" data-id="av_footer" data-theme="a"> <!-- Footer -->
+              <div data-role="navbar"> <!-- NavBar -->
+                  <ul>
+                      <li><a href="#home" data-role="button" data-icon="home">Home</a></li>
+                      <li><a href="#news" data-role="button" data-icon="av_news">News</a></li>
+                      <li><a href="#activity" data-role="button" data-icon="av_act">Activities</a></li>
+                      <li><a href="#nav" onclick="showMap()" data-role="button" data-icon="av_nav">Map</a></li>
+                      <li><a href="#contact" data-role="button" data-icon="av_contact">Contact</a></li>
+                  </ul>
+              </div> <!-- /navbar -->
+          </div> <!-- /footer -->
+      </div> <!-- /page -->
+      
+      <!-- Page: Activites -->
+      <div id="activity" data-role="page" data-title="Abbeyshrule: Activites" data-theme="a" data-iscroll="enable">
+          <div data-role="header" data-position="fixed" data-id="av_header" data-theme="a">
+              <h1>Activites</h1>
+              <a href="#home" data-icon="home" data-iconpos="notext">Home</a>
+              <a href="#info"data-icon="info" data-iconpos="notext"data-rel="dialog">Info</a>
+          </div> <!-- /header -->
+          <div data-role="content"> <!-- Content -->
+              <div data-iscroll="scroller">
+              <div data-role="collapsible-set">
+                  <div data-role="collapsible">
+                      <h3>Things to do </h3>
+                      <p>Leisure in Abbeyshrule can take you to the skies in a Tigermoth aircraft, learn how to fly at Abbeyshrule Airfield, watch an aerobatics display or even join the aerobatics pilot in the cockpit for the ultimate adrenaline rush. After your time in the skies over Abbeyshrule you can then hop on a barge or boat on the Royal Canal and float downstream to Abbeyshrule Village. Here you can explore one of the many walking routes or go canoeing on the River Inny. For the more relaxing leisurely option one can sit on the canal banks or River Inny banks and relax as you cast your fishing line for a tasty catch. For wildlife enthusiasts there are three bird sanctuaries to investigate and the rich bog lands which support many varied habitats.</p>
+                      
+                      <p>Abbeyshrule is a hive of activity throughout the year with a festival calendar which steps up to national level. The calendar of annual festivals includes the Spring Angling Festival, the Royal Canal Boat Rally, the National Ballooning Championships, the Irish-Argentinian Association Asado, Annual International Air Show, the Goldsmith Literary Summer School, the Christmas Craft and Design Fair.</p>
+                  </div>
+                  <div data-role="collapsible">
+                      <h3>Go Skydiving</h3>
+                      <p>Tandem Skydiving (Parachuting) is the best and safest way for a complete novice to,
+                      Taste the Sky.The Parachute Centre is only just over 1 hour from Dublin and 1 minute from Abbeyshrule Village. </p>
+                      <p>Ph: 0818 GET ONE or 0818438663 or 087 1513344</p>
+                  </div>
+                  <div data-role="collapsible">
+                      <h3>Kayaking</h3>
+                      <p>Abbeyshrule is the ideal setting for a kayaking trip on the Royal canal or for the more adventurous the River Inny. Suitable for complete beginners and people with experience. Lots of fun to be had. Bring snacks and a packed lunch!!</p>
+                  </div>
+                  <div data-role="collapsible">
+                      <h3>Walking Trails</h3>
+                      <p>Abbeyshrule has four different walking trails available to see the sites and delights of the rual setting. Drop into the Rustic Inn to pick up a map.</p>
+                  </div>
+                  <div data-role="collapsible">
+                      <h3>Airfield</h3>
+                      <p>Abbeyshrule Airfield is located outside the village of Abbeyshrule. There has been a long tradition of flying in Abbeyshrule dating back to the 1950s. The present airfield was established in 1977 and a new tarmac runway as laid in 1977. Abbeyfield Airfield is a popular location for light aircraft enthusiasts in the Midlands and throughout Ireland. There are two flying clubs based at the airfield offering flying tuition, the Inny Aero Club and Aero Club 2000. The Abbeyshrule Air Show which is Ireland's longest running airshow is held annually at the airfield, on the second Sunday of August. The Airshow is an exciting and spectacular occasion and regularly features Aircraft from the Irish Air Corps, US Air Force and some of the best civilian acts in Ireland and the UK. The Abbeyshrule Annual Fly-In held in conjunction with the Air Show regularly attracts visitors from the UK and from Europe, in particular Germany.</p>
+                  </div>
+                  <div data-role="collapsible">
+                      <h3>The Boglands</h3>
+                      <p>On the perimeter of the village are the boglands, our carbon sinks. Clonbrin and Williamstown raised bogs lie to the east of Abbeyshrule village, running along the Longford / Westmeath county boundary. Raised bogs are accumulations of deep acid peat (usually between 3-12 m deep) that originated in shallow lake basins or topographic depressions. The name is derived from the elevated surface, or dome, that develops as raised bogs grow upwards from the surface; the domed effect is often exaggerated when the margins of a bog are damaged by turf cutting or drainage, and are drying out. In a natural state, raised bogs are circled by a wetland fringe, known as the lag zone, which is usually characterised by fern communities.</p>
+                      
+                          <p>Raised bogs are most abundant in the lowlands of central and mid-west Ireland although exploitation has been extensive and no Irish raised bogs remain completely intact. In Ireland, most lag zones have been lost through drainage and land reclamation. It also contains areas of intact high quality raised bog, mainly in its central areas with much of the remaining surrounding edges being highly degraded through turf cutting and drainage. The central intact areas of high bog are classified as PB1 Raised Bog while the other areas are classified as PB4 Cutover Bog, WS1 Scrub, WN7 Bog Woodland or other transitional habitat types.</p>
+                      
+                          <p>The intact areas of raised bog contain characteristic bog species including Hare’s-tail Cottongrass Eriopherum vaginatum, Heather Calluna vulgaris, Bog Rosemary Andromeda polifolia, Bog Asphodel Narthecium ossifragum, Cranberry Vaccinium oxycoccos, Round-leaved Sundew Drosera rotundifolia, Heath Milkwort Polygala serpyllifolia and a diverse range of lichens and Sphagnum mosses.</p>
+                      
+                          <p>Bog Rosemary is particularly abundant in some of these areas. Some areas in the southern part of the bog are supporting dense WN7 Bog Woodland characterised by Downy Birch Betula pubescens with Gorse Ulex europaeus around the fringes and heavy encroachment by Cherry Laurel Prunus laurocerasus. In areas where Cherry Laurel has not got a stronghold birch dominated WN7 Bog Woodland is present with understorey growth of Holly Ilex aquifolium, Bramble Rubus fruticosus agg., Bracken Pteridium aquilinum, Purple Moor-grass Molinia caerulea and Sphagnum mosses. Other areas around the fringes of the raised bog have been planted with Sitka Spruce Picea sitchensis and Norway Spruce Picea abies conifer plantations, some with established networks of pathways and paved roads.</p>
+                  </div>
+                  <div data-role="collapsible">
+                      <h3>Flora and Fauna</h3>
+                      <p>Abbeyshrule is a small village with typical urban habitats including buildings, roads and residential gardens. These are typically of low ecological value. However the gardens have potential to be valuable for wildlife, depending on their size and type of shrub and tree planting which they have. In addition, the centre of Abbeyshrule village has a number of features of significant biodiversity interest; including stone walls and bridges, a small apple orchard, the Royal Canal and the River Inny.</p>
+                  
+                      <p>The village is located in a rural setting surrounded by good quality agricultural land which is farmed, primarily for grazing livestock. The surrounding farmland is characterised by intensively managed agricultural grasslands with hedgerows of varying ecological value.</p>
+                  
+                      <p>A number of species occur in the Royal Canal, which though of considerable national and international importance, are not protected. For example, the rare and declining Glutinous Snail Myxas glutinosa which is virtually confined in Ireland to the Royal and Grand Canal systems and is only known recently from three sites in Britain (Kerney, 1999). This is an endangered species which is threatened primarily due to habitat degradation through eutrophication (reduction of water quality due to nutrient loading).</p>
+                  
+                      <p>This species of Irish snail population is considered globally important as it represents up to 50% of the global population. This Glutinous Snail has been recorded at Scally's Bridge on the Royal Canal, immediately north of Abbeyshrule village, with further records in the Royal Canal short distances up and downstream of the village.</p>
+                      <p>The most important habitats in the village for fauna species are by far the River Inny and the Royal Canal. The hedgerows in the surrounding agricultural lands are also of value for song birds. Sadly as many have been severely cut back their value is somewhat reduced.</p>
+                      <p>As the village has a small urban footprint, it benefits from the agricultural lands, including its many hedgerows. Biodiversity features exist immediately adjacent and alongside the village and in some cases are even part of the village itself.</p>
+                      <p>A distinct aspect of our flora and fauna is the rich ecology found in the acres of virgin boglands that lie to the perimeter of our village. Nearby Newcastle Woods is a mecca for woodlands species and animal life.</p>
+                  </div>
+                  <div data-role="collapsible">
+                    <h3>The Whitworth Aqueduct</h3>
+                    <p>This magnificent large-scale aqueduct carries the Royal Canal and associated towpaths over the River Inny, a distance of 165 feet. It is arguably the single most impressive feature along the entire length of the Royal Canal and is the most important element of the nineteenth century engineering heritage of County Longford. It is robustly constructed in excellent quality limestone masonry, while the extensive ashlar and cut limestone trim adds substantially to the aesthetics and its architectural character. The bases of both the main elevations are battered in a concave curve to counteract the outward thrust, which creates a robust, but highly pleasing and elegant composition. This bridge survives in excellent condition, which is testament to the quality of the original construction and the skill of the stonemasons and engineers involved.</p>
+                  
+                    <p>The stone used in the construction was reputedly quarried at Castlewilder, which is located a short distance to the northeast. This fine structure was built to designs by John Killaly (1766 - 1832), the engineer responsible for the construction of the Royal Canal between Coolnahay to Cloondara. Construction commenced in 1814 and it was completed in 1817. This fine aqueduct is a notable addition to the built heritage of Longford, and represents one of the most impressive features of its type in Ireland. It cost c. 5,000 IRL Pounds to construct.</p>
+                  </div>
+                  <div data-role="collapsible">
+                      <h3>Angling</h3>
+                      <p>The Inny River, near Abbeyshrule is a good source of fishing. Roach and pike can be found in some of the slower glides throughout the year. In April/ May largecatches of roach can be expected on the big sweeping bend south of Abbeyshrule. Upstream of the airfield the river travels through peat bog and on this stretch of the river, the main species found are roach and pike but occasionally some fine rudd and hybrids are caught. Anglers are requested to respect local club rules and return all fish carefully back into the river.</p>
+                  </div>
+                  <div data-role="collapsible">
+                      <h3>Cistercian Abbey</h3>
+                      <p>Abbeyshrule Cistercian Abbey was founded from Mellifont in 1150 AD by the Cistercians during the lifetime of their founder St. Bernard of Clairvaux and endowed by O'Farrell, Prince of Annally. It enjoyed large possessions west to Ballnamanagh, the Town of the Monks, and to the north the medieval chapel of Agharra. The Abbey was built on the site of an earlier Christian settlement whose ninth century abbots are recorded in the Annals. A surviving early Christian High Cross is preserved in the village. The monastery was ransacked on two occasions, by an army from the Pale and at a later period by Hugh Ruadh O'Donnell. Suppressed during the reign of Elizabeth I and eventually confiscated by the Earl of Roscommon (Dillon). Some of the earliest stonework survives. The Cistercian obligatory water mill was powered by the River Inny. The actual site stretched to a large area before boundary walls were built around it during the last century. The tower house was a medieval watchtower used by the autonomous O'Farrell Clan.</p>
+                      
+                      <p>It is estimated that at its pinnacle the monastery had 6000 acres in its possession immediately across the river to the west. Additionally a townsland known to this day as Ballinamanagh (town of the monks) show traces of an outer farming habitation connected to the monastery. This townland is beyond Colehill some 3 kilometres away. Like its sister Cistercian houses it operated a water mill on the Inny. This mill would have been an integral part of Abbeyshrule over many centuries and the last traces of it were erased by the river drainage of the 1960's.</p>
+                      
+                      <p>In conclusion, it can be said that Flumen Dei is the finest surviving and is the last great monument to the O‘Farrell Clan and the region known as Annaly itself. Their other castles at Ardandra, Castlewilder, Tenelick, Cloncallow etc. on the River lnny are all but disappeared. This strategic location was home to an earlier monastic settlement which existed before the Cistercian foundation. Abbots of the tenth century are recorded in the Annals of the Four Masters. There is also the matter of surviving artefacts; the best known being the inscribed Early Christian Cross which expert opinion dates to the eighth or ninth century. The cross replica commissioned in 2011 is currently on display at the Abbey entrance.</p>
+                  </div>
+              </div> <!-- /Collapsible-set -->
+                  </div>
+          </div> <!-- /Content -->
+          <div data-role="footer" data-position="fixed" data-id="av_footer" data-theme="a"> <!-- Footer -->
+              <div data-role="navbar"> <!-- NavBar -->
+                  <ul>
+                      <li><a href="#home" data-role="button" data-icon="home">Home</a></li>
+                      <li><a href="#news" data-role="button" data-icon="av_news">News</a></li>
+                      <li><a href="#gallery" data-role="button" data-icon="av_gallery">Gallery</a></li>
+                      <li><a href="#nav" onclick="showMap()" data-role="button" data-icon="av_nav">Map</a></li>
+                      <li><a href="#contact" data-role="button" data-icon="av_contact">Contact</a></li>
+                  </ul>
+              </div> <!-- /navbar -->
+          </div> <!-- /footer -->
+      </div> <!-- /page -->
+      
+      <!-- Page: Videos -->
+      <div id="videos" data-role="page" data-title="Abbeyshrule: Videos">
+          <div data-role="header" data-position="fixed" data-id="av_header">
+              <h1>Videos</h1>
+              <a href="#home" data-icon="home" data-iconpos="notext">Home</a>
+              <a href="#photos" data-icon="arrow-r" data-iconpos="right">Photos</a>
+          </div> <!-- /header -->
+          <div data-role="content"> <!-- Content -->
+              <div data-role="content">
+                  <div class="ui-grid-a" id="videolist">
+                  </div> <!-- /Grid -->
+              </div> <!-- /Content -->
+          </div> <!-- /Content -->
+          <div data-role="footer" data-position="fixed" data-id="av_footer"> <!-- Footer -->
+              <div data-role="navbar"> <!-- NavBar -->
+                  <ul>
+                      <li><a href="#home" data-role="button" data-icon="home">Home</a></li>
+                      <li><a href="#news" data-role="button" data-icon="av_news">News</a></li>
+                      <li><a href="#activity" data-role="button" data-icon="av_act">Activities</a></li>
+                      <li><a href="#nav" onclick="showMap()" data-role="button" data-icon="av_nav">Map</a></li>
+                      <li><a href="#contact" data-role="button" data-icon="av_contact">Contact</a></li>
+                  </ul>
+              </div> <!-- /navbar -->
+          </div> <!-- /footer -->
+      </div> <!-- /page -->
+      
+      <!-- Page: Video Player -->
+      <div id="videoplayer" data-role="page">
+          <div data-role="header" data-position="fixed" data-theme="a">
+              <a href="#videos" data-transition="fade" data-icon="back" data-iconpos="notext" data-direction="reverse">Videos</a>
+              <h1>Videos</h1>
+          </div> <!-- /Header -->
+          <div data-role="content">
+              <div id="myplayer"></div>
+          </div> <!-- /Content -->
+      </div> <!-- /page -->
+      
+      <!-- Page: Photos -->
+      <div id="photos" data-role="page" data-title="Abbeyshrule: Photos">
+          <div data-role="header" data-position="fixed" data-id="av_header">
+              <h1>Photos</h1>
+              <a href="#home" data-icon="home" data-iconpos="notext">Home</a>
+              <a href="#videos" data-icon="arrow-r" data-iconpos="right">Videos</a>
+          </div> <!-- /header -->
+          <div data-role="content"> <!-- Content -->
+              <div class="ui-grid-c" id="photolist">
+              </div> <!-- /Grid -->
+          </div> <!-- /Content -->
+          <div data-role="footer" data-position="fixed" data-id="av_footer"> <!-- Footer -->
+              <div data-role="navbar"> <!-- NavBar -->
+                  <ul>
+                      <li><a href="#home" data-role="button" data-icon="home">Home</a></li>
+                      <li><a href="#news" data-role="button" data-icon="av_news">News</a></li>
+                      <li><a href="#activity" data-role="button" data-icon="av_act">Activities</a></li>
+                      <li><a href="#nav" onclick="showMap()" data-role="button" data-icon="av_nav">Map</a></li>
+                      <li><a href="#contact" data-role="button" data-icon="av_contact">Contact</a></li>
+                  </ul>
+              </div> <!-- /navbar -->
+          </div> <!-- /footer -->
+      </div><!-- /page -->
+      
+      <!-- Page: Show Photos -->
+      <div data-role="page" id="showphoto">
+          <div data-role="header" data-position="fixed">
+              <a href="#photos" data-transition="fade" data-icon="back" data-iconpos="notext">Photoa</a>
+          </div> <!-- /header -->
+          <div data-role="content">
+              <div id="myphoto"></div>
+          </div>
+      </div><!-- /page -->
+      
+      <!-- Page: Contact -->
+      <div id="contact" data-role="page" data-title="Abbeyshrule: Contact">
+          <div data-role="header" data-position="fixed" data-id="av_header">
+              <h1>Contact Us</h1>
+              <a href="#home" data-icon="home" data-iconpos="notext">Home</a>
+              <a href="#info" data-icon="info" data-iconpos="notext" data-rel="dialog">Info</a>
+          </div> <!-- /header -->
+          <div data-role="content"> <!-- Content -->
+
+              
+              <form onsubmit='return formValidator()' data-ajax="false" action="#thanks"  method="get" >
+                  <div data-role="fieldcontain">
+                      <label for="firstname">Name <sup>*</sup></label>
+                      <input onclick="showAlertName(); return false;" type='text' id='firstname' placeholder="e.g. John Smith" required />
+                      <label id='name'></label>
+                  </div>
+                  <div data-role="fieldcontain">
+                      <label for='email'>Email <sup>*</sup></label>
+                      <input onclick="showAlertEmail(); return false;" type='email' id='email' name="email" placeholder="you@yourdomain.com" required/>
+                      <label id='emailmsg'></label>
+                  </div>
+                  <div data-role="fieldcontain">
+                      <label for="comment">Comment</label>
+                      <textarea name="comment" id="comment" cols="8" rows="4"></textarea>
+                  </div>
+                  <input type='submit' value='Send' />
+              </form>
+          </div> <!-- /Content -->
+          <div data-role="footer" data-position="fixed" data-id="av_footer"> <!-- Footer -->
+              <div data-role="navbar"> <!-- NavBar -->
+                  <ul>
+                      <li><a href="#home" data-role="button" data-icon="home">Home</a></li>
+                      <li><a href="#news" data-role="button" data-icon="av_news">News</a></li>
+                      <li><a href="#activity" data-role="button" data-icon="av_act">Activities</a></li>
+					  <li><a href="#gallery" data-role="button" data-icon="av_gallery">Gallery</a></li>
+                  </ul>
+              </div> <!-- /navbar -->
+          </div> <!-- /footer -->
+      </div><!-- /page -->
+      
+      
+       <!-- Page: Thank You -->
+      <div id="thanks" data-role="page" data-title="Abbeyshrule: Contact">
+          <div data-role="header" data-position="fixed" data-id="av_header">
+              <h1>Contact Us</h1>
+              <a href="#home" data-icon="home" data-iconpos="notext">Home</a>
+              <a href="#info" data-icon="info" data-iconpos="notext" data-rel="dialog">Info</a>
+          </div> <!-- /header -->
+          <div data-role="content"> <!-- Content -->
+              Thank you for contacting us.
+              
+          </div> <!-- /Content -->
+          <div data-role="footer" data-position="fixed" data-id="av_footer"> <!-- Footer -->
+              <div data-role="navbar"> <!-- NavBar -->
+                  <ul>
+                      <li><a href="#home" data-role="button" data-icon="home">Home</a></li>
+                      <li><a href="#news" data-role="button" data-icon="av_news">News</a></li>
+                      <li><a href="#activity" data-role="button" data-icon="av_act">Activities</a></li>
+                      <li><a href="#gallery" data-role="button" data-icon="av_gallery">Gallery</a></li>
+                      <li><a href="#nav" onclick="showMap()" data-role="button" data-icon="av_nav">Map</a></li>
+                  </ul>
+              </div> <!-- /navbar -->
+          </div> <!-- /footer --> 
+      </div><!-- /page -->
+      
+      <!-- Page: Information -->
+      <div data-role="page" id="info" data-theme="a">
+          <div data-role="header" data-theme="a">
+              <h1>About</h1>
+          </div> <!-- Header -->
+          <div data-role="content">
+              Abbeyshrule, an ancient heritage village rich in history, is surrounded by the waters of the River Inny and the Royal Canal and their impressive stone bridges. Unique to the village is the fact that three ancient bridges provide a walkway into an equally ancient settlement originating from the Cistercian Abbey which paradoxically sits outside of the village triangle of "bridge-ways". The River Inny and the Royal Canal waterways marry at the historical aqueduct. Both waterways travel side by side a short two miles when just south of Abbeyshrule village they go their separate ways.
+          </div> <!-- /Content -->
+      </div> <!-- /page -->
+      
+      <!-- WordPress Json Feed Call -->
+      <script src="http://abbeyshruletidyvillages.ie/news/?json=recentstories&callback=listPosts" type="text/javascript"></script>
+      <!-- Flicker Json Feed Call -->
+      <script src="http://api.flickr.com/services/feeds/photos_public.gne?id=88954738@N06&format=json" type="text/javascript"></script>
+      <!-- YouTube API Json Call -->
+      <script src="http://gdata.youtube.com/feeds/users/abbeyshruletv/uploads?alt=json-in-script&callback=listVideos" type="text/javascript"></script>
+  </body>
+</html>

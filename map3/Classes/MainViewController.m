@@ -68,12 +68,11 @@
 }
 
 /* Comment out the block below to over-ride */
-/*
+
 - (CDVCordovaView*) newCordovaViewWithFrame:(CGRect)bounds
 {
     return[super newCordovaViewWithFrame:bounds];
 }
-*/
 
 /* Comment out the block below to over-ride */
 /*
@@ -119,7 +118,7 @@
 }
 
 /* Comment out the block below to over-ride */
-/*
+
 
 - (void) webViewDidStartLoad:(UIWebView*)theWebView 
 {
@@ -135,6 +134,6 @@
 {
 	return [super webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
 }
-*/
+
 
 @end
